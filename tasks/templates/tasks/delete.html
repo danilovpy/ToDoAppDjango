@@ -1,0 +1,8 @@
+<h3>Are you sure you want to delete {{ task.task_text }}</h3>
+<form action="{% url 'index' %}">
+    <button><a href="{% url 'index' %}" style="text-decoration: none;color : #000000; " type = "button">Cancel</a></button>
+</form>
+<form method="POST">
+    {% csrf_token %}
+    <button>Delete</button>
+</form>

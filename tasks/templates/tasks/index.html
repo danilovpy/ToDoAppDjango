@@ -1,0 +1,15 @@
+<form method="POST" action="/">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" name="Create Task">
+</form>
+{% if tasks %}
+    <ul>
+    {% for task in tasks %}
+        <li> {{ task.task_text }} due to {{ task.due_to }}<br>{{ task.pub_date }}</li>
+        <a href="{% url 'detail' task.id %}">Edit</a> <a href="{% url 'delete' task.id %}">Delete</a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No tasks are available.</p>
+{% endif %}
